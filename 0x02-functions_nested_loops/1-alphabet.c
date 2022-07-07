@@ -3,12 +3,8 @@
 /**
  * print_alphabet - prints alphabet in lower case
  *
- * created : Damvp101
- * cc: 7th july, 2022
- * 
  * Return: void
  */
-
 void print_alphabet(void)
 {
 	int ii;

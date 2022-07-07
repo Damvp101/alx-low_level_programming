@@ -1,20 +1,26 @@
 #include "main.h"
 
 /**
- * main - Print the word "_putchar"
+ * main - this program prints _putchar
  *
- * Return: Always 0 (Success)
+ * created : Damvp101
+ * cc: 7 july, 2022
+ *
+ * Return: (0) if successful
  */
 
 int main(void)
 {
-	int i;
-	char p[] = "_putchar";
+	char var[] = "_putchar";
+	int ii;
+	/*length of the array var*/
+	int lenVar = sizeof(var) / sizeof(var[0]);
 
-	for (i = 0; i < 8; i++)
+	for (ii = 0; ii < lenVar - 1; ii++)
 	{
-		_putchar(p[i]);
+		_putchar(var[ii]);
 	}
 	        _putchar('\n');
+
 	return (0);
 }

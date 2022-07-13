@@ -7,25 +7,21 @@
  */
 char *rot13(char *n)
 {
-int x, rot_c = 13, i = 0;
-char toswap[] = {'A', 'N', 'a', 'n', 'B', 'O', 'b', 'o', 'C', 'P',
-'c', 'p', 'D', 'Q', 'd', 'q', 'E', 'R', 'e', 'r', 'F', 'S', 'f',
-'s', 'G', 'T', 'g', 't', 'H', 'U', 'h', 'u', 'I', 'V', 'i', 'v',
-'J', 'W', 'j', 'w', 'K', 'X', 'k', 'x', 'L', 'Y', 'l', 'y', 'M',
-'Z', 'm', 'z'};
+int a = 0;
 
-while (n[i] != '\0')
+while (s[a])
 {
-for (x = 0; x <= 51; x++)
+while ((s[a] >= 'a' && s[a] <= 'z') || (s[a] >= 'A' && s[a] <= 'Z'))
 {
-if (n[i] == toswap[x])
+if ((s[a] > 'm' && s[a] <= 'z') || (s[a] > 'M' && s[a] <= 'Z'))
 {
-n[i] = n[i] + rot_c;
-x = 51;
+s[a] -= 13;
+break;
 }
-rot_c = rot_c * -1;
+s[a] += 13;
+break;
 }
-i++;
+a++;
 }
-return (n);
+return (s);
 }

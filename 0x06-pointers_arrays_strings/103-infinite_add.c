@@ -1,30 +1,51 @@
 #include "main.h"
 #include <stdio.h>
-
 /**
- * infinite_add - Adds two numbers.
- * @n1: The first number to be added.
- * @n2: The second number to be added.
- * @r: The buffer to store the result.
- * @size_r: The buffer size.
+ * infinite_add - a function that adds two numbers
+ * @n1: a char pointer given by main that represents a num
+ * @n2: a char pointer given by main that represents a num
+ * @r: a buffer given by main
+ * @size_r: the buffer size given by main
  *
- * Return: If r can store the sum - a pointer to the result.
- *         If r cannot store the sum - 0.
+ * Return: the result to char *r
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r);
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-int index, n1_len = 0, n2_len = 0;
+int i = 0, j = 0, k = 0;
+int sum = 0;
+int tens = 0;
+int begin = 0;
+int swap = 0;
 
-{
-for (index = 0; *(n1 + index); index++)
-n1_len++;
-for (index = 0; *(n2 + index); index++)
-n2_len++;
-if (size_r <= n1_len + 1 || size_r <= n2_len + 1)
+while (n1[i] != 0)
+i++;
+while (n2[j] != 0)
+j++;
+i--;
+j--;
+if (i > size_r || j > size_r)
 return (0);
-n1 += n1_len - 1;
-n2 += n2_len - 1;
-*(r + size_r) = '\0';
-return (add_strings(n1, n2, r, --size_r));
+for ( ; k < size_r; i--, j--, k++)
+{
+sum = tens;
+if (i >= 0)
+sum += n1[i] - '0';
+if (j >= 0)
+sum += n2[j] - '0';
+if (i < 0 && j < 0 && sum == 0)
+break;
+tens = sum / 10;
+r[k] = sum % 10 + '0';
 }
+if (i >= 0 || j >= 0 || sum > 0)
+return (0);
+r[k] = '\0';
+k--;
+for ( ; begin < k; k--, begin++)
+{
+swap = r[k];
+r[k] = r[begin];
+r[begin] = swap;
+}
+return (r);
 }

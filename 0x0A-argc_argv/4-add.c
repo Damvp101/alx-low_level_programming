@@ -2,37 +2,30 @@
 #include <stdlib.h>
 
 /**
- * main - adds positive numbers.
- * @argc: argument count
- * @argv: arguments
+ * main - add parameters passed to main
+ * @argc: number of actual parameter passed to main
+ * @argv: pointer to the parameter passed
  *
- * Return: 0
+ * Return: 0 if success
+ *
  */
-int main(int argc, char **argv)
+
+int main(int argc, char *argv[])
 {
-	int i, n, sum = 0;
-	char *flag;
+	int i, j, result = 0;
 
-	if (argc < 2)
+	for (i = 1; i < argc; i++)
 	{
-		printf("0\n");
-		return (0);
-	}
-
-	for (i = 1; argv[i]; i++)
-	{
-		n = strtol(argv[i], &flag, 10);
-		if (*flag)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error\n");
+				exit(EXIT_FAILURE);
+			}
 		}
-		else
-		}
-			sum += n;
-		}
+		result += atoi(argv[i]);
 	}
-	printf("%d\n", sum);
-
-	return (0);
+	printf("%d\n", result);
+	exit(EXIT_SUCCESS);
 }
